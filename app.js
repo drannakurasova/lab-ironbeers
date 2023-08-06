@@ -39,4 +39,19 @@ app.get('/beers', (req, res, next) => {
   
 })
 
+app.get ("/random-beer", (req, res, next) => {
+  punkAPI
+  .getRandom()
+  .then( (responseFromAPI) => {
+    console.log (responseFromAPI)
+    res.render("random-beer.hbs", { beers: responseFromAPI } );
+      // image: responseFromAPI.image_url,
+      // name: responseFromAPI.name
+   
+
+  })
+  .catch(error => console.log(error));
+
+} )
+
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
